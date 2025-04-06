@@ -1,0 +1,49 @@
+@use "@/assets/_variables.scss" as *;
+
+.v-table {
+  width: 100%;
+  border-collapse: collapse;
+
+  .v-table__wrapper {
+    table {
+      thead {
+        tr {
+          th {
+            background-color: $thead-bg  !important;
+            font-weight: 600;
+            border-right: 2px solid $border-color;
+          }
+        }
+      }
+
+      tbody {
+        tr {
+          transition: all 0.3s ease;
+
+          td {
+            border-right: 2px solid $border-color;
+            height: $custom-row-height !important;
+          }
+        }
+      }
+    }
+  }
+
+  // Hoặc nếu muốn giữ class has-hover
+  &.has-hover {
+    .v-table__wrapper table tbody tr:hover {
+      background-color: $row-hover-bg !important;
+      color: white !important;
+      cursor: pointer;
+    }
+  }
+
+  &.has-even-old {
+    .v-table__wrapper table tbody tr:nth-child(even) {
+      background-color: $even-row-bg;
+    }
+    .v-table__wrapper table tbody tr:nth-child(odd) {
+      background-color: $odd-row-bg;
+    }
+  }
+}
