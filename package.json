@@ -11,6 +11,7 @@
   "dependencies": {
     "@mdi/font": "^7.4.47",
     "d3": "^7.9.0",
+    "pinia": "^3.0.2",
     "route_path": "file:",
     "v-infinite-scroll": "^1.0.4",
     "vue": "^3.5.13",

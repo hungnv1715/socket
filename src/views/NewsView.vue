@@ -1,89 +1,63 @@
-<!-- Map.vue -->
 <template>
-  <svg width="1000" height="1000">
-    <polyline points="0,0 800,00" stroke="grey" fill="none" />
-    <polyline points="0,10 800,10" stroke="grey" fill="none" />
-    <polyline points="0,20 800,20" stroke="grey" fill="none" />
-    <polyline points="0,30 800,30" stroke="grey" fill="none" />
-    <polyline points="0,40 800,40" stroke="grey" fill="none" />
-    <polyline points="0,50 800,50" stroke="grey" fill="none" />
-    <polyline points="0,60 800,60" stroke="grey" fill="none" />
-    <polyline points="0,70 800,70" stroke="grey" fill="none" />
-    <polyline points="0,0 0,400" stroke="grey" fill="none" />
-    <polyline points="10,0 10,400" stroke="grey" fill="none" />
-    <polyline points="20,0 20,400" stroke="grey" fill="none" />
-    <polyline points="30,0 30,400" stroke="grey" fill="none" />
-    <polyline points="40,0 40,400" stroke="grey" fill="none" />
-    <polyline points="50,0 50,400" stroke="grey" fill="none" />
-    <polyline points="60,0 60,400" stroke="grey" fill="none" />
-    <polyline points="60,0 60,400" stroke="grey" fill="none" />
-    <polyline points="70,0 70,400" stroke="grey" fill="none" />
-    <polyline points="80,0 80,400" stroke="grey" fill="none" />
-    <polyline points="90,0 90,400" stroke="grey" fill="none" />
-    <polyline points="100,0 100,400" stroke="grey" fill="none" />
-    <polyline points="110,0 110,400" stroke="grey" fill="none" />
-    <polyline points="120,0 120,400" stroke="grey" fill="none" />
-    <defs>
-      <symbol id="switch-1-on">
-        <polyline points="-10,-10 10,10 20,0" stroke="green" fill="none" />
-        <text x="25" y="12" fill="green">ON</text>
-      </symbol>
-      <symbol id="switch-1-off">
-        <polyline points="0,10 10,0 20,10" stroke="red" fill="none" />
-        <text x="25" y="12" fill="red">OFF</text>
-      </symbol>
-      <symbol id="switch-2-on">
-        <rect x="0" y="0" width="20" height="20" fill="blue" />
-        <text x="25" y="15" fill="blue">ON</text>
-      </symbol>
-      <symbol id="switch-2-off">
-        <rect x="0" y="0" width="20" height="20" fill="gray" />
-        <text x="25" y="15" fill="gray">OFF</text>
-      </symbol>
-    </defs>
-
-    <SwitchSymbol
-      v-for="switchItem in switches"
-      :key="switchItem.id"
-      :switch-id="switchItem.id"
-      :status="switchItem.status"
-      :x="switchItem.x"
-      :y="switchItem.y"
-    />
-  </svg>
+  <v-container fluid>
+    <v-table>
+      <thead>
+        <tr>
+          <th class="text-center">Tên</th>
+          <th class="text-center">Tuổi</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="(item, index) in items" :key="index">
+          <td>
+            <input
+              v-model="item.name"
+              class="cell-input"
+              type="text"
+            />
+          </td>
+          <td>
+            <input
+              v-model="item.age"
+              class="cell-input"
+              type="number"
+            />
+          </td>
+        </tr>
+      </tbody>
+    </v-table>
+    <v-container>
+      <v-text-field variant="solo-filled" density="compact" flat hide-details single-line ></v-text-field>
+    </v-container>
+  </v-container>
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue';
-import SwitchSymbol from './SwitchSymbol.vue'; // Đảm bảo đường dẫn đúng
+import { ref } from 'vue'
 
-const switches = ref([
-  { id: 1, status: 'on', x: 20, y: 20 },
-  { id: 2, status: 'off', x: 60, y: 60 },
-  // { id: 2, status: 'off', x: 300, y: 150 },
-  // { id: 2, status: 'off', x: 400, y: 150 },
-  // Loại bỏ { id: 3, status: 'on', x: 300, y: 200 } vì không có symbol tương ứng
-]);
-
-const updateSwitchStatus = (switchId, newStatus) => {
-  const switchItem = switches.value.find((s) => s.id === switchId);
-  if (switchItem) {
-    switchItem.status = newStatus;
-  }
-};
-
-let intervalId = null;
-onMounted(() => {
-  intervalId = setInterval(() => {
-    const randomIndex = Math.floor(Math.random() * switches.value.length);
-    // switches.value[randomIndex].status =
-    //   switches.value[randomIndex].status === 'on' ? 'off' : 'on';
-  }, 2000);
-});
-
-onUnmounted(() => {
-  if (intervalId) {
-    clearInterval(intervalId);
-  }
-});
+const items = ref([
+  { name: 'An', age: 25 },
+  { name: 'Bình', age: 30 },
+])
 </script>
+
+<style scoped>
+.cell-input {
+  border: none;
+  outline: none;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  vertical-align: top;
+  padding: 8px;
+}
+
+/* td {
+  border: 1px solid #ccc;
+  padding: 0;
+} */
+
+
+
+
+</style>

@@ -13,6 +13,8 @@
 <script setup>
 import Header from './components/Header.vue'
 import { ref, onMounted, onUnmounted } from 'vue'
+import { useLocationStore } from '@/stores/locationStore'
+
 
 const msg_for_header = ref("")
 const msg_for_router = ref("")
@@ -20,6 +22,9 @@ const msg_for_router = ref("")
 let ws = null
 
 onMounted(() => {
+  const store = useLocationStore()
+  store.fetchAllLocations()
+  
   ws = new WebSocket('ws://localhost:8000/ws')
 
   // Xử lý sự kiện mở kết nối

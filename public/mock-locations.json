@@ -1,0 +1,64 @@
+[
+    {
+      "code": "01",
+      "name": "Hà Nội",
+      "districts": [
+        {
+          "code": "0101",
+          "name": "Quận Ba Đình",
+          "wards": [
+            {
+              "code": "010101",
+              "name": "Phường Phúc Xá",
+              "hamlets": [
+                { "code": "01010101", "name": "Tổ 1" },
+                { "code": "01010102", "name": "Tổ 2" }
+              ]
+            },
+            {
+              "code": "010102",
+              "name": "Phường Trúc Bạch",
+              "hamlets": [
+                { "code": "01010201", "name": "Khu A" },
+                { "code": "01010202", "name": "Khu B" }
+              ]
+            }
+          ]
+        },
+        {
+          "code": "0102",
+          "name": "Quận Hoàn Kiếm",
+          "wards": [
+            {
+              "code": "010201",
+              "name": "Phường Hàng Trống",
+              "hamlets": [
+                { "code": "01020101", "name": "Ngõ 1" }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "code": "02",
+      "name": "TP. Hồ Chí Minh",
+      "districts": [
+        {
+          "code": "0201",
+          "name": "Quận 1",
+          "wards": [
+            {
+              "code": "020101",
+              "name": "Phường Bến Nghé",
+              "hamlets": [
+                { "code": "02010101", "name": "Tổ 1" },
+                { "code": "02010102", "name": "Tổ 2" }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+  
